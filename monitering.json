@@ -1,1 +1,1 @@
-{"memory":73.00, "cpu":7.66, "disk":45.00 }
+{"memory":[{"memoryTotal":972, "memoryUsed":711, "memoryPer":90.00}],"cpu":[{ "cpuTotal":100,"cpuUsed":10.95,"cpuPer":10.95}],"disk":[{ "diskTotal":24.41,"diskUsed":11.26,"diskPer":46.00 }]}
