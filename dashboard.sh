@@ -40,7 +40,6 @@ diskPer=`echo "scale=2; $diskUsed/$diskTotal*100" | bc`
 mysql KVM_DB -h 192.168.2.200 -u root -proot<<EOF
 #insert into cpu (srv, total, used, per) values ('kvm', 100, $cpuPer, $cpuPer);
 insert into memory (srv, total, used, per) values ('kvm', $memTotal , $memUsed, $memPer);
-
 EOF
 
 echo "{\"memory\":[{\"memoryTotal\":$memTotal, \"memoryUsed\":$memUsed, \"memoryPer\":$memPer}],\"cpu\":[{ \"cpuTotal\":100,\"cpuUsed\":$cpuPer,\"cpuPer\":$cpuPer}],\"disk\":[{ \"diskTotal\":$diskTotal,\"diskUsed\":$diskUsed,\"diskPer\":$diskPer }]}" > /var/www/html/monitering.json
