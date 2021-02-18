@@ -1,0 +1,8 @@
+/dev/mapper/centos-root    17811456 6824132  10987324      39% /
+devtmpfs                     480900       0    480900       0% /dev
+tmpfs                        497836   45996    451840      10% /dev/shm
+tmpfs                        497836       0    497836       0% /sys/fs/cgroup
+tmpfs                        497836   52456    445380      11% /run
+/dev/sda1                   1038336  218056    820280      22% /boot
+tmpfs                         99568      36     99532       1% /run/user/0
+/dev/sr0                    4669162 4669162         0     100% /run/media/root/CentOS 7 x86_64
