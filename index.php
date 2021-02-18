@@ -78,43 +78,32 @@
 
                 <div class="content-wrapper">
                     <div class="content">
-
-
-
+                        <!-- 도넛 차트 부분 -->
                         <div class="row">
-                            <div class="monitering col-xl-4 col-md-12">
+                            <div class="monitering chart-container col-xl-4 col-md-12">
                                 <ul class="width60 cpu">
                                     <li>전체 CPU : <span class="total"></span>%</li>
                                     <li>사용중인 CPU : <span class="used"></span>%</li>
                                     <li>CPU 사용률 : <span class="per"></span>%</li>
-                                </ul> 
-                            </div>  
-                            <div class="monitering col-xl-4 col-md-12">
+                                </ul>
+                                <canvas id="cpu"></canvas>
+                            </div>
+
+                            <div class="monitering chart-container col-xl-4 col-md-12">
                                 <ul class="width60 memory">
                                     <li>전체 MEMORY : <span class="total"></span></li>
                                     <li>사용중인 MEMORY : <span class="used"></span></li>
                                     <li>MEMORY 사용률 : <span class="per"></span>%</li>
                                 </ul> 
-                            </div>  
-                            <div class="monitering col-xl-4 col-md-12">
+                                <canvas id="memory"></canvas>
+                            </div>
+
+                            <div class="monitering chart-container col-xl-4 col-md-12">
                                 <ul class="width60 disk">
                                     <li>전체 DISK : <span class="total"></span>G</li>
                                     <li>사용중인 DISK : <span class="used"></span>G</li>
                                     <li>DISK 사용률 : <span class="per"></span>%</li>
                                 </ul> 
-                            </div>  
-                        </div>
-                        <!-- 도넛 차트 부분 -->
-                        <div class="row">
-                            <div class="chart-container col-xl-4 col-md-12">
-                                <canvas id="cpu"></canvas>
-                            </div>
-
-                            <div class="chart-container col-xl-4 col-md-12">
-                                <canvas id="memory"></canvas>
-                            </div>
-
-                            <div class="chart-container col-xl-4 col-md-12">
                                 <canvas id="disk"></canvas>
                             </div>
                         </div>
@@ -140,13 +129,13 @@
                         var PerCpuEL=$('.cpu .per');
 
                         // MEMORY
-                        var usedMemoryEL=$('.memory .total');
-                        var totalMemoryEL=$('.memory .used');
+                        var totalMemoryEL=$('.memory .total');
+                        var usedMemoryEL=$('.memory .used');
                         var PerMemoryEL=$('.memory .per');
                         
                         // DISK
-                        var usedDiskEL=$('.disk .total');
-                        var totalDiskEL=$('.disk .used');
+                        var totalDiskEL=$('.disk .total');
+                        var usedDiskEL=$('.disk .used');
                         var perDiskEL=$('.disk .per');
 
                         function getTotal(){
@@ -320,7 +309,7 @@
 
                         $(function () {
                             
-                           // setInterval(() => {
+                            setInterval(() => {
                                 $.ajax({
                                     type: 'get',
                                     url: 'exe.php',
@@ -345,6 +334,9 @@
                                         usedMemory=data["memory"][0].memoryUsed;
                                         perMemory=data["memory"][0].memoryPer;
                                         
+                                        console.log(_totalMemory)
+                                        console.log(usedMemory)
+
                                         _totalDisk=data["disk"][0].diskTotal;
                                         usedDisk=data["disk"][0].diskUsed;
                                         perDisk=data["disk"][0].diskPer;
@@ -372,7 +364,7 @@
 
                                     }
                                 });
-                        // }, 1000);
+                            }, 1000);
                          
                         
                         });
