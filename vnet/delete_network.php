@@ -34,7 +34,7 @@
             rel="stylesheet"/>
 
         <!-- SLEEK CSS -->
-        <link id="sleek-css" rel="stylesheet" href="../assets/css/sleek.css"/>
+        <link rel="stylesheet" href="../assets/css/sleek.css"/>
 
         <!-- FAVICON -->
         <link href="../assets/img/logo.png" rel="shortcut icon"/>
