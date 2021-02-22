@@ -1,3 +1,5 @@
+<?php include $_SERVER["DOCUMENT_ROOT"]."/login/login_session_check.php";?>
+
 <!DOCTYPE html>
 <html lang="ko" dir="ltr">
     <head>
@@ -46,9 +48,11 @@
         src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script> <script
         src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script> <![endif]-->
         <script src="../assets/plugins/nprogress/nprogress.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
     </head>
 
-    <body class="header-fixed sidebar-fixed sidebar-dark header-light" id="body">
+    <body class="header-fixed sidebar-fixed sidebar-dark header-light" id="body" data-page="instant-list">
 
         <script>
             NProgress.configure({showSpinner: false});

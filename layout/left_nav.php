@@ -3,7 +3,7 @@
     <div id="sidebar" class="sidebar sidebar-with-footer">
         <!-- Aplication Brand -->
         <div class="app-brand">
-            <a href="/index.php" title="Sleek Dashboard">
+            <a href="/index.php" title="Sleek Dashboard" class="dashboard">
                 <img src="/assets/img/logo.png" width="40px">
                     <span class="brand-name text-truncate">Blockchain Class</span>
                 </a>
@@ -15,7 +15,7 @@
                 <ul class="nav sidebar-inner" id="sidebar-menu">
 
                     <li class="has-sub active expand">
-                        <a class="sidenav-item-link" href="/index.php">
+                        <a class="sidenav-item-link dashboard" href="/index.php">
                             <i class="mdi mdi-view-dashboard-outline"></i>
                             <span class="nav-text">Dashboard</span>
                         </a>
@@ -37,14 +37,14 @@
                             <div class="sub-menu">
 
                                 <li >
-                                    <a class="sidenav-item-link" href="#">
+                                    <a class="sidenav-item-link effective" href="#">
                                         <span class="nav-text">Squid Guard</span>
 
                                     </a>
                                 </li>
 
                                 <li >
-                                    <a class="sidenav-item-link" href="#">
+                                    <a class="sidenav-item-link effective" href="#">
                                         <span class="nav-text">Firewall</span>
 
                                     </a>
@@ -84,13 +84,13 @@
                                         <div class="sub-menu">
 
                                             <li >
-                                                <a href="/vnet/create_nat_network_form.php">
+                                                <a href="/vnet/create_nat_network_form.php" class="effective nat-network">
                                                     <i class="mdi mdi-play"></i>
                                                     NAT Network</a>
                                             </li>
 
                                             <li >
-                                                <a href="/vnet/create_iso_network_form.php">
+                                                <a href="/vnet/create_iso_network_form.php" class="effective iso-network">
                                                     <i class="mdi mdi-play"></i>
                                                     Isolated Network</a>
                                             </li>
@@ -100,7 +100,7 @@
                                 </li>
 
                                 <li >
-                                    <a class="sidenav-item-link" href="/vnet/view_network_list.php">
+                                    <a class="sidenav-item-link effective net-list" href="/vnet/view_network_list.php">
                                         <span class="nav-text">View Network List</span>
 
                                     </a>
@@ -140,7 +140,7 @@
                                         <div class="sub-menu">
 
                                             <li >
-                                                <a href="/kvm/create_centos.php">
+                                                <a href="/kvm/create_centos.php" class="effective centos-create">
                                                     <i class="mdi mdi-play"></i>
                                                     CentOS Instance</a>
                                             </li>
@@ -162,7 +162,7 @@
                                 </li>
 
                                 <li >
-                                    <a class="sidenav-item-link" href="/kvm/view_instance_list.php">
+                                    <a class="sidenav-item-link effective instant-list" href="/kvm/view_instance_list.php">
                                         <span class="nav-text">View Instance List</span>
 
                                     </a>
@@ -327,4 +327,36 @@
         </div>
     </aside>
 
+    <script>
+     $(function () {
+        $nav = $('#sidebar-menu');
+        $1depth=$nav.children('.has-sub');
+        $1depth.on('click', function(){
+            $1depth.removeClass('active');
+            $(this).addClass('active');
+        });
+
+        $main =$('.dashboard')
+        $main.on('click', function(){
+           localStorage.setItem('click', false);
+           localStorage.setItem('click', false);
+        });
+
+        $realLink=$('a.effective');
+        $realLink.on('click', function(){
+            localStorage.setItem('click', true);
+        });
+
+        if(localStorage.getItem('click')){
+            $clickUrl=$('#body').data('page');
+            $this=$("."+$clickUrl)
+            
+            $this.parents('.collapse').addClass('show');
+            $this.closest('.collapse').parents('.has-sub').addClass('active').addClass('expand');
+            $this.closest('.collapse').parents('.has-sub').children('.sidenav-item-link').removeClass('collapsed').attr('aria-expanded',"true");
+        }
+
+    
+     });
+    </script>
 <!-- //LEFT SIDE NAV WITH FOOTER -->

@@ -1,5 +1,7 @@
+<?php include $_SERVER["DOCUMENT_ROOT"]."/login/login_session_check.php";?>
+
 <!DOCTYPE html>
-<html lang="" dir="ltr">
+<html lang="ko" dir="ltr">
     <head>
         <meta charset="utf-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -101,7 +103,7 @@
 
     </head>
 
-    <body class="header-fixed sidebar-fixed sidebar-dark header-light" id="body">
+    <body class="header-fixed sidebar-fixed sidebar-dark header-light" id="body" data-page="centos-create">
 
         <script>
             NProgress.configure({showSpinner: false});

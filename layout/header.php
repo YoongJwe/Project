@@ -94,6 +94,8 @@
 
                 if(!isset($_SESSION['name'])){
                     echo "<li class='login'><a href='/login/login.php'>LOGIN</a></li>";
+                    //header("location: /login/login.php");
+
                 }else{ 
                     echo '<li class="dropdown user-menu">';
                     echo '    <button href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">';
