@@ -350,8 +350,6 @@
             $clickUrl=$('#body').data('page');
             $this=$("."+$clickUrl)
             
-            console.log($this)
-
             $this.parents('.collapse').addClass('show');
             $this.closest('.collapse').parents('.has-sub').addClass('active').addClass('expand');
             $this.closest('.collapse').parents('.has-sub').children('.sidenav-item-link').removeClass('collapsed').attr('aria-expanded',"true");
