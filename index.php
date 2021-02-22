@@ -820,8 +820,8 @@
                                     },
                                     cutoutPercentage : 90
                                 }
-                            });
-
+                            });      
+     
                             $(function () {
 
                             setInterval(() => {
@@ -830,7 +830,7 @@
                                     }});
                                 $.ajax({
                                     type: 'get',
-                                    url: 'monitering.json',
+                                    url: 'monitering.json', 
                                     dataType: 'json',
                                     mimeType: "application/json",
                                     success: function (data) {

@@ -10,8 +10,8 @@
 
         <title>Blockchain Class</title>
 
-        <!-- GOOGLE FONTS -->
-        <link
+          <!-- GOOGLE FONTS -->
+          <link
             href="https://fonts.googleapis.com/css?family=Montserrat:400,500|Poppins:400,500,600,700|Roboto:400,500"
             rel="stylesheet"/>
         <link
@@ -46,10 +46,20 @@
         src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script> <script
         src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script> <![endif]-->
         <script src="../assets/plugins/nprogress/nprogress.js"></script>
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+        <script
+            src="https://code.jquery.com/jquery-3.5.1.min.js"
+            integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+            crossorigin="anonymous"></script>
+
+        <script src="../assets/plugins/jquery/jquery.min.js"></script>
+        <script src="../assets/plugins/slimscrollbar/jquery.slimscroll.min.js"></script>
+        <script src="../assets/plugins/jekyll-search.min.js"></script>
+
+        <script src="../assets/js/sleek.bundle.js"></script>
     </head>
 
-    <body class="header-fixed sidebar-fixed sidebar-dark header-light" id="body">
+    <body class="header-fixed sidebar-fixed sidebar-dark header-light" id="body" data-page="ubuntu-create">
 
         <script>
             NProgress.configure({showSpinner: false});

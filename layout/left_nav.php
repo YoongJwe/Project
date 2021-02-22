@@ -146,13 +146,13 @@
                                             </li>
 
                                             <li >
-                                                <a href="/kvm/settings_ubuntu.php">
+                                                <a href="/kvm/settings_ubuntu.php" class="effective ubuntu-create"> 
                                                     <i class="mdi mdi-play"></i>
                                                     Ubuntu Instance</a>
                                             </li>
 
                                             <li >
-                                                <a href="/kvm/settings_fedora.php">
+                                                <a href="/kvm/settings_fedora.php" class="effective fedora-create">
                                                     <i class="mdi mdi-play"></i>
                                                     Fedora Instance</a>
                                             </li>
@@ -351,12 +351,12 @@
             $clickUrl=$('#body').data('page');
             $this=$("."+$clickUrl)
             
+            $this.attr('style','color:#fff');
             $this.parents('.collapse').addClass('show');
             $this.closest('.collapse').parents('.has-sub').addClass('active').addClass('expand');
             $this.closest('.collapse').parents('.has-sub').children('.sidenav-item-link').removeClass('collapsed').attr('aria-expanded',"true");
         }
 
-    
-     });
+       
     </script>
 <!-- //LEFT SIDE NAV WITH FOOTER -->
