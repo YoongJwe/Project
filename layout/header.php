@@ -86,55 +86,55 @@
                 <li class="right-sidebar-in right-sidebar-2-menu">
                     <i class="mdi mdi-settings mdi-spin"></i>
                 </li>
-                <!-- User Account -->
-                <li class="dropdown user-menu">
-                    <button href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                        <img src="../assets/img/user/user.png" class="user-image" alt="User Image"/>
-                        <span class="d-none d-lg-inline-block">Abdus Salam</span>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-right">
-                        <!-- User image -->
-                        <li class="dropdown-header">
-                            <img src="../assets/img/user/user.png" class="img-circle" alt="User Image"/>
-                            <div class="d-inline-block">
-                                Abdus Salam
-                                <small class="pt-1">iamabdus@gmail.com</small>
-                            </div>
-                        </li>
+                
+                <?php
+                session_start();
+                $userName=$_SESSION['name'];
+                $userEmail=$_SESSION['email'];
 
-                        <li>
-                            <a href="user-profile.html">
-                                <i class="mdi mdi-account"></i>
-                                My Profile
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="mdi mdi-email"></i>
-                                Message
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="mdi mdi-diamond-stone"></i>
-                                Projects
-                            </a>
-                        </li>
-                        <li class="right-sidebar-in">
-                            <a href="javascript:0">
-                                <i class="mdi mdi-settings"></i>
-                                Setting
-                            </a>
-                        </li>
-
-                        <li class="dropdown-footer">
-                            <a href="index.php">
-                                <i class="mdi mdi-logout"></i>
-                                Log Out
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+                if(!isset($_SESSION['name'])){
+                    echo "<li class='login'><a href='/login/login.php'>LOGIN</a></li>";
+                }else{ 
+                    echo '<li class="dropdown user-menu">';
+                    echo '    <button href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">';
+                    echo '        <img src="../assets/img/user/user.png" class="user-image" alt="User Image"/>';
+                    echo '        <span class="d-none d-lg-inline-block">'.$userName.'</span>';
+                    echo '    </button>';
+                    echo '    <ul class="dropdown-menu dropdown-menu-right">';
+                    echo '        <li class="dropdown-header">';
+                    echo '            <img src="../assets/img/user/user.png" class="img-circle" alt="User Image"/>';
+                    echo '            <div class="d-inline-block">';
+                    echo '                <small class="pt-1">'.$userEmail.'</small>';
+                    echo '            </div>';
+                    echo '        </li>';
+                    echo '        <li>';
+                    echo '            <a href="user-profile.html">';
+                    echo '                <i class="mdi mdi-account"></i>';
+                    echo '                My Profile';
+                    echo '            </a>';
+                    echo '        </li>';
+                    echo '        <li>';
+                    echo '            <a href="#">';
+                    echo '                <i class="mdi mdi-diamond-stone"></i>';
+                    echo '                Projects';
+                    echo '            </a>';
+                    echo '        </li>';
+                    echo '        <li class="right-sidebar-in">';
+                    echo '            <a href="javascript:0">';
+                    echo '                <i class="mdi mdi-settings"></i>';
+                    echo '                Setting';
+                    echo '            </a>';
+                    echo '        </li>';
+                    echo '        <li class="dropdown-footer">';
+                    echo '            <a href="/login/logout.php">';
+                    echo '                <i class="mdi mdi-logout"></i>';
+                    echo '                Log Out';
+                    echo '            </a>';
+                    echo '        </li>';
+                    echo '    </ul>';
+                    echo '</li>';
+                }
+                ?>
             </ul>
         </div>
     </nav>

@@ -10110,7 +10110,7 @@
 	      showMethod: "fadeIn",
 	      hideMethod: "fadeOut"
 	    };
-	    toastr.success("Welcome to Sleek Dashboard", "Howdy!");
+	    toastr.success("JABBIX Dashboard 에 잘 오셨습니다!", "반가워요!");
 	  }
 
 	  if(toaster.length != 0){

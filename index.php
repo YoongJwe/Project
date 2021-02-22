@@ -20,8 +20,12 @@
 
         <!-- PLUGINS CSS STYLE -->
         <link href="assets/plugins/nprogress/nprogress.css" rel="stylesheet"/>
-        <link href="assets/plugins/jvectormap/jquery-jvectormap-2.0.3.css" rel="stylesheet"/>
-        <link href="assets/plugins/daterangepicker/daterangepicker.css" rel="stylesheet"/>
+        <link
+            href="assets/plugins/jvectormap/jquery-jvectormap-2.0.3.css"
+            rel="stylesheet"/>
+        <link
+            href="assets/plugins/daterangepicker/daterangepicker.css"
+            rel="stylesheet"/>
         <link href="assets/plugins/toastr/toastr.min.css" rel="stylesheet"/>
         <link rel="stylesheet" href="assets/css/sleek.css"/>
         <link rel="stylesheet" href="assets/css/custom.css"/>
@@ -37,8 +41,11 @@
         src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script> <![endif]-->
         <script src="assets/plugins/nprogress/nprogress.js"></script>
 
-        <!-- jQuery  -->
-        <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>        
+        <!-- jQuery -->
+        <script
+            src="https://code.jquery.com/jquery-3.5.1.js"
+            integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+            crossorigin="anonymous"></script>
         <!-- CHART HS -->
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
     </head>
@@ -78,274 +85,782 @@
 
                 <div class="content-wrapper">
                     <div class="content">
+
+                        <div class="row">
+                            <div class="col-xl-12 col-md-12 graph">
+                                <canvas id="graph" style="display: block; height: 300px; width: 798px;"></canvas>
+                            </div>
+
+                            <?php
+                                $conn = mysqli_connect( '192.168.2.200', 'root', 'root', 'KVM_DB' ) ;
+                                $sqlForCpu = "select per, time from cpu order by idx desc limit 30;";
+                                $sqlForMemory = "select per from memory order by idx desc limit 30;";
+                                $sqlForDisk = "select per from disk order by idx desc limit 30;";
+
+                                $resultForCpu = mysqli_query( $conn, $sqlForCpu );
+                                $resultForMemory = mysqli_query( $conn, $sqlForMemory );
+                                $resultForDisk = mysqli_query( $conn, $sqlForDisk );
+
+
+                                // echo " $result";
+                                echo "<div class='graph-data-cpu display-none'>";
+                                while($row = mysqli_fetch_array($resultForCpu)) {           
+                                echo "<dl>";
+                                echo "<dt>" . $row['per'] . "</dt>";
+                                echo "<dd>" . $row['time'] . "</dd>";
+                                echo "</dl>";
+                                }
+                                echo "</div>";
+                            
+                                echo "<ul class='graph-data-memory display-none'>";
+                                while($row2 = mysqli_fetch_array($resultForMemory)) {           
+                                echo "<li>" . $row2['per'] . "</li>";
+                                }
+                                echo "</ul>";
+                            
+                                echo "<ul class='graph-data-disk display-none'>";
+                                while($row3 = mysqli_fetch_array($resultForDisk)) {           
+                                echo "<li>" . $row3['per'] . "</li>";
+                                }
+                                echo "</ul>";
+                            ?>
+
+                            <script>
+                                var time = $('.graph-data-cpu dd');
+                                var perCpu = $('.graph-data-cpu dt');
+                                var perMemory = $('.graph-data-memory li');
+                                var perDisk = $('.graph-data-disk li');
+
+                                var config = {
+                                    type: 'line',
+                                    data: {
+                                        labels: [
+                                            time
+                                                .eq(29)
+                                                .text()
+                                                .substring(11, 19),
+                                            time
+                                                .eq(28)
+                                                .text()
+                                                .substring(11, 19),
+                                            time
+                                                .eq(27)
+                                                .text()
+                                                .substring(11, 19),
+                                            time
+                                                .eq(26)
+                                                .text()
+                                                .substring(11, 19),
+                                            time
+                                                .eq(25)
+                                                .text()
+                                                .substring(11, 19),
+                                            time
+                                                .eq(24)
+                                                .text()
+                                                .substring(11, 19),
+                                            time
+                                                .eq(23)
+                                                .text()
+                                                .substring(11, 19),
+                                            time
+                                                .eq(22)
+                                                .text()
+                                                .substring(11, 19),
+                                            time
+                                                .eq(21)
+                                                .text()
+                                                .substring(11, 19),
+                                            time
+                                                .eq(20)
+                                                .text()
+                                                .substring(11, 19),
+                                            time
+                                                .eq(19)
+                                                .text()
+                                                .substring(11, 19),
+                                            time
+                                                .eq(18)
+                                                .text()
+                                                .substring(11, 19),
+                                            time
+                                                .eq(17)
+                                                .text()
+                                                .substring(11, 19),
+                                            time
+                                                .eq(16)
+                                                .text()
+                                                .substring(11, 19),
+                                            time
+                                                .eq(15)
+                                                .text()
+                                                .substring(11, 19),
+                                            time
+                                                .eq(14)
+                                                .text()
+                                                .substring(11, 19),
+                                            time
+                                                .eq(13)
+                                                .text()
+                                                .substring(11, 19),
+                                            time
+                                                .eq(12)
+                                                .text()
+                                                .substring(11, 19),
+                                            time
+                                                .eq(11)
+                                                .text()
+                                                .substring(11, 19),
+                                            time
+                                                .eq(10)
+                                                .text()
+                                                .substring(11, 19),
+                                            time
+                                                .eq(9)
+                                                .text()
+                                                .substring(11, 19),
+                                            time
+                                                .eq(8)
+                                                .text()
+                                                .substring(11, 19),
+                                            time
+                                                .eq(7)
+                                                .text()
+                                                .substring(11, 19),
+                                            time
+                                                .eq(6)
+                                                .text()
+                                                .substring(11, 19),
+                                            time
+                                                .eq(5)
+                                                .text()
+                                                .substring(11, 19),
+                                            time
+                                                .eq(4)
+                                                .text()
+                                                .substring(11, 19),
+                                            time
+                                                .eq(3)
+                                                .text()
+                                                .substring(11, 19),
+                                            time
+                                                .eq(2)
+                                                .text()
+                                                .substring(11, 19),
+                                            time
+                                                .eq(1)
+                                                .text()
+                                                .substring(11, 19),
+                                            time
+                                                .eq(0)
+                                                .text()
+                                                .substring(11, 19)
+                                        ],
+                                        datasets: [
+                                            {
+                                                label: 'CPU',
+                                                data: [
+                                                    perCpu
+                                                        .eq(29)
+                                                        .text(),
+                                                    perCpu
+                                                        .eq(28)
+                                                        .text(),
+                                                    perCpu
+                                                        .eq(27)
+                                                        .text(),
+                                                    perCpu
+                                                        .eq(26)
+                                                        .text(),
+                                                    perCpu
+                                                        .eq(25)
+                                                        .text(),
+                                                    perCpu
+                                                        .eq(24)
+                                                        .text(),
+                                                    perCpu
+                                                        .eq(23)
+                                                        .text(),
+                                                    perCpu
+                                                        .eq(22)
+                                                        .text(),
+                                                    perCpu
+                                                        .eq(21)
+                                                        .text(),
+                                                    perCpu
+                                                        .eq(20)
+                                                        .text(),
+                                                    perCpu
+                                                        .eq(19)
+                                                        .text(),
+                                                    perCpu
+                                                        .eq(18)
+                                                        .text(),
+                                                    perCpu
+                                                        .eq(17)
+                                                        .text(),
+                                                    perCpu
+                                                        .eq(16)
+                                                        .text(),
+                                                    perCpu
+                                                        .eq(15)
+                                                        .text(),
+                                                    perCpu
+                                                        .eq(14)
+                                                        .text(),
+                                                    perCpu
+                                                        .eq(13)
+                                                        .text(),
+                                                    perCpu
+                                                        .eq(12)
+                                                        .text(),
+                                                    perCpu
+                                                        .eq(11)
+                                                        .text(),
+                                                    perCpu
+                                                        .eq(10)
+                                                        .text(),
+                                                    perCpu
+                                                        .eq(9)
+                                                        .text(),
+                                                    perCpu
+                                                        .eq(8)
+                                                        .text(),
+                                                    perCpu
+                                                        .eq(7)
+                                                        .text(),
+                                                    perCpu
+                                                        .eq(6)
+                                                        .text(),
+                                                    perCpu
+                                                        .eq(5)
+                                                        .text(),
+                                                    perCpu
+                                                        .eq(4)
+                                                        .text(),
+                                                    perCpu
+                                                        .eq(3)
+                                                        .text(),
+                                                    perCpu
+                                                        .eq(2)
+                                                        .text(),
+                                                    perCpu
+                                                        .eq(1)
+                                                        .text(),
+                                                    perCpu
+                                                        .eq(0)
+                                                        .text()
+                                                ],
+                                                borderColor: ['rgba(76,132,255, 1)'],
+                                                borderWidth: 1,
+                                                fill: false
+                                            }, {
+                                                label: 'MEMORY',
+                                                data: [
+                                                    perMemory
+                                                        .eq(29)
+                                                        .text(),
+                                                    perMemory
+                                                        .eq(28)
+                                                        .text(),
+                                                    perMemory
+                                                        .eq(27)
+                                                        .text(),
+                                                    perMemory
+                                                        .eq(26)
+                                                        .text(),
+                                                    perMemory
+                                                        .eq(25)
+                                                        .text(),
+                                                    perMemory
+                                                        .eq(24)
+                                                        .text(),
+                                                    perMemory
+                                                        .eq(23)
+                                                        .text(),
+                                                    perMemory
+                                                        .eq(22)
+                                                        .text(),
+                                                    perMemory
+                                                        .eq(21)
+                                                        .text(),
+                                                    perMemory
+                                                        .eq(20)
+                                                        .text(),
+                                                    perMemory
+                                                        .eq(19)
+                                                        .text(),
+                                                    perMemory
+                                                        .eq(18)
+                                                        .text(),
+                                                    perMemory
+                                                        .eq(17)
+                                                        .text(),
+                                                    perMemory
+                                                        .eq(16)
+                                                        .text(),
+                                                    perMemory
+                                                        .eq(15)
+                                                        .text(),
+                                                    perMemory
+                                                        .eq(14)
+                                                        .text(),
+                                                    perMemory
+                                                        .eq(13)
+                                                        .text(),
+                                                    perMemory
+                                                        .eq(12)
+                                                        .text(),
+                                                    perMemory
+                                                        .eq(11)
+                                                        .text(),
+                                                    perMemory
+                                                        .eq(10)
+                                                        .text(),
+                                                    perMemory
+                                                        .eq(9)
+                                                        .text(),
+                                                    perMemory
+                                                        .eq(8)
+                                                        .text(),
+                                                    perMemory
+                                                        .eq(7)
+                                                        .text(),
+                                                    perMemory
+                                                        .eq(6)
+                                                        .text(),
+                                                    perMemory
+                                                        .eq(5)
+                                                        .text(),
+                                                    perMemory
+                                                        .eq(4)
+                                                        .text(),
+                                                    perMemory
+                                                        .eq(3)
+                                                        .text(),
+                                                    perMemory
+                                                        .eq(2)
+                                                        .text(),
+                                                    perMemory
+                                                        .eq(1)
+                                                        .text(),
+                                                    perMemory
+                                                        .eq(0)
+                                                        .text()
+                                                ],
+
+                                                borderColor: ['rgba(254,196,0,1)'],
+                                                borderWidth: 1,
+                                                fill: false
+                                            }, {
+                                                label: 'DISK',
+                                                data: [
+                                                    perDisk
+                                                        .eq(29)
+                                                        .text(),
+                                                    perDisk
+                                                        .eq(28)
+                                                        .text(),
+                                                    perDisk
+                                                        .eq(27)
+                                                        .text(),
+                                                    perDisk
+                                                        .eq(26)
+                                                        .text(),
+                                                    perDisk
+                                                        .eq(25)
+                                                        .text(),
+                                                    perDisk
+                                                        .eq(24)
+                                                        .text(),
+                                                    perDisk
+                                                        .eq(23)
+                                                        .text(),
+                                                    perDisk
+                                                        .eq(22)
+                                                        .text(),
+                                                    perDisk
+                                                        .eq(21)
+                                                        .text(),
+                                                    perDisk
+                                                        .eq(20)
+                                                        .text(),
+                                                    perDisk
+                                                        .eq(19)
+                                                        .text(),
+                                                    perDisk
+                                                        .eq(18)
+                                                        .text(),
+                                                    perDisk
+                                                        .eq(17)
+                                                        .text(),
+                                                    perDisk
+                                                        .eq(16)
+                                                        .text(),
+                                                    perDisk
+                                                        .eq(15)
+                                                        .text(),
+                                                    perDisk
+                                                        .eq(14)
+                                                        .text(),
+                                                    perDisk
+                                                        .eq(13)
+                                                        .text(),
+                                                    perDisk
+                                                        .eq(12)
+                                                        .text(),
+                                                    perDisk
+                                                        .eq(11)
+                                                        .text(),
+                                                    perDisk
+                                                        .eq(10)
+                                                        .text(),
+                                                    perDisk
+                                                        .eq(9)
+                                                        .text(),
+                                                    perDisk
+                                                        .eq(8)
+                                                        .text(),
+                                                    perDisk
+                                                        .eq(7)
+                                                        .text(),
+                                                    perDisk
+                                                        .eq(6)
+                                                        .text(),
+                                                    perDisk
+                                                        .eq(5)
+                                                        .text(),
+                                                    perDisk
+                                                        .eq(4)
+                                                        .text(),
+                                                    perDisk
+                                                        .eq(3)
+                                                        .text(),
+                                                    perDisk
+                                                        .eq(2)
+                                                        .text(),
+                                                    perDisk
+                                                        .eq(1)
+                                                        .text(),
+                                                    perDisk
+                                                        .eq(0)
+                                                        .text()
+                                                ],
+
+                                                borderColor: ['rgba(255,112,141,1)'],
+                                                borderWidth: 1,
+                                                fill: false
+                                            }
+                                        ]
+                                    },
+                                    options: {
+                                        responsive: true,
+                                        // maintainAspectRatio:
+                                        scales: {
+                                            yAxes: [
+                                                {
+                                                    beginAtZero: true,
+
+                                                    ticks: {
+                                                        suggestedMin: 0,
+                                                        suggestedMax: 100
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+
+                                window.onload = function () {
+                                    var graphEL = document
+                                        .getElementById('graph')
+                                        .getContext('2d');
+                                    window.graph = new Chart(graphEL, config);
+                                };
+                            </script>
+                        </div>
+
                         <!-- 도넛 차트 부분 -->
                         <div class="row">
                             <div class="monitering chart-container col-xl-4 col-md-12">
-                                <ul class="width60 cpu">
-                                    <li>전체 CPU : <span class="total"></span>%</li>
-                                    <li>사용중인 CPU : <span class="used"></span>%</li>
-                                    <li>CPU 사용률 : <span class="per"></span>%</li>
-                                </ul>
-                                <canvas id="cpu"></canvas>
+                                <div class="guide">
+                                    <h4>CPU</h4>
+                                    <ul class="width60 cpu">
+                                        <li>전체 :
+                                            <span class="total"></span>%</li>
+                                        <li>사용중 :
+                                            <span class="used"></span>%</li>
+                                        <li><span class="per"></span>%</li>
+                                    </ul>
+                                    <canvas id="cpu"></canvas>
+                                </div>
                             </div>
 
                             <div class="monitering chart-container col-xl-4 col-md-12">
-                                <ul class="width60 memory">
-                                    <li>전체 MEMORY : <span class="total"></span></li>
-                                    <li>사용중인 MEMORY : <span class="used"></span></li>
-                                    <li>MEMORY 사용률 : <span class="per"></span>%</li>
-                                </ul> 
-                                <canvas id="memory"></canvas>
+                                <div class="guide">
+                                    <h4>MEMORY</h4>
+                                    <ul class="width60 memory">
+                                        <li>전체 :
+                                            <span class="total"></span></li>
+                                        <li>사용중 :
+                                            <span class="used"></span></li>
+                                        <li><span class="per"></span>%</li>
+                                    </ul>
+                                    <canvas id="memory"></canvas>
+                                </div>
                             </div>
 
                             <div class="monitering chart-container col-xl-4 col-md-12">
-                                <ul class="width60 disk">
-                                    <li>전체 DISK : <span class="total"></span>G</li>
-                                    <li>사용중인 DISK : <span class="used"></span>G</li>
-                                    <li>DISK 사용률 : <span class="per"></span>%</li>
-                                </ul> 
-                                <canvas id="disk"></canvas>
+                                <div class="guide">
+                                    <h4>DISK</h4>
+                                    <ul class="width60 disk">
+                                        <li>전체 :
+                                            <span class="total"></span>G</li>
+                                        <li>사용중 :
+                                            <span class="used"></span>G</li>
+                                        <li><span class="per"></span>%</li>
+                                    </ul>
+                                    <canvas id="disk"></canvas>
+                                </div>
                             </div>
                         </div>
                         <script>
-                        // CPU
-                        var usedCpu;
-                        var totalCpu;
-                        var PerCpu=0;
+                            // CPU
+                            var usedCpu;
+                            var totalCpu;
+                            var PerCpu = 0;
 
-                        // MEMORY
-                        var usedMemory;
-                        var totalMemory;
-                        var PerMemory=0;
-                        
-                        // DISK
-                        var usedDisk;
-                        var totalDisk;
-                        var perDisk=0;
+                            // MEMORY
+                            var usedMemory;
+                            var totalMemory;
+                            var PerMemory = 0;
 
-                        // CPU
-                        var totalCpuEL=$('.cpu .total');
-                        var usedCpuEL=$('.cpu .used');
-                        var PerCpuEL=$('.cpu .per');
+                            // DISK
+                            var usedDisk;
+                            var totalDisk;
+                            var perDisk = 0;
 
-                        // MEMORY
-                        var totalMemoryEL=$('.memory .total');
-                        var usedMemoryEL=$('.memory .used');
-                        var PerMemoryEL=$('.memory .per');
-                        
-                        // DISK
-                        var totalDiskEL=$('.disk .total');
-                        var usedDiskEL=$('.disk .used');
-                        var perDiskEL=$('.disk .per');
+                            // CPU
+                            var totalCpuEL = $('.cpu .total');
+                            var usedCpuEL = $('.cpu .used');
+                            var PerCpuEL = $('.cpu .per');
+                            var graphBarCpuEL = $('.cpu .progress-bar.active');
 
-                        function getTotal(){
-                            totalCpu = 100-perCpu;
-                            totalMemory = 100-perMemory;
-                            totalDisk = 100-perDisk;
-                        };
-                        
-                        var cpuChart = document
-                            .getElementById('cpu')
-                            .getContext('2d');
-                        var memoryChart = document
-                            .getElementById('memory')
-                            .getContext('2d');
-                        var diskChart = document
-                            .getElementById('disk')
-                            .getContext('2d');
+                            // MEMORY
+                            var totalMemoryEL = $('.memory .total');
+                            var usedMemoryEL = $('.memory .used');
+                            var PerMemoryEL = $('.memory .per');
+                            var graphBarMemoryEL = $('.cpu .progress-bar.progress-bar-warning');
 
-                        var cpuChart = new Chart(cpuChart, {
-                            type: 'doughnut',
-                            data: {
-                                labels: [
-                                    '전체 CPU', '사용중인 CPU'
-                                ],
-                                datasets: [
-                                    {
-                                        label: '# of Votes',
-                                        data: [
-                                            totalCpu, usedCpu
-                                        ],
-                                        backgroundColor: [
-                                            'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)'
-                                        ],
-                                        borderColor: [
-                                            'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)'
-                                        ],
-                                        borderWidth: 1
-                                    }
-                                ]
-                            },
-                            options: {
-                                animation: {
-                                    duration: 0
-                                }, 
-                                scales: {
-                                    yAxes: [
+                            // DISK
+                            var totalDiskEL = $('.disk .total');
+                            var usedDiskEL = $('.disk .used');
+                            var perDiskEL = $('.disk .per');
+
+                            function getTotal() {
+                                totalCpu = 100 - perCpu;
+                                totalMemory = 100 - perMemory;
+                                totalDisk = 100 - perDisk;
+                            };
+
+                            var cpuChart = document
+                                .getElementById('cpu')
+                                .getContext('2d');
+                            var memoryChart = document
+                                .getElementById('memory')
+                                .getContext('2d');
+                            var diskChart = document
+                                .getElementById('disk')
+                                .getContext('2d');
+
+                            var cpuChart = new Chart(cpuChart, {
+                                type: 'doughnut',
+                                data: {
+                                    datasets: [
                                         {
-                                            gridLines: {
-                                                display: false
-                                            },
-                                            ticks: {
-                                                display: false
-                                            }
-                                        }
-                                    ],
-                                    xAxes: [
-                                        {
-                                            gridLines: {
-                                                display: false
-                                            },
-                                            ticks: {
-                                                display: false
-                                            }
+                                            data: [
+                                                totalCpu, usedCpu
+                                            ],
+                                            backgroundColor: [
+                                                'rgba(255,255,255,1)', 'rgba(76,132,255, 0.5)'
+                                            ],
+                                            borderColor: [
+                                                'rgba(76,132,255, 1)', 'rgba(76,132,255, 1)'
+                                            ],
+                                            borderWidth: 1,
                                         }
                                     ]
+                                },
+                                options: {
+                                    animation: {
+                                        duration: 0
+                                    },
+                                    scales: {
+                                        yAxes: [
+                                            {
+                                                gridLines: {
+                                                    display: false
+                                                },
+                                                ticks: {
+                                                    display: false
+                                                }
+                                            }
+                                        ],
+                                        xAxes: [
+                                            {
+                                                gridLines: {
+                                                    display: false
+                                                },
+                                                ticks: {
+                                                    display: false
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    hoverOffset: 10,
+                                    cutoutPercentage : 90
                                 }
-                            }
-                        });
+                            });
 
-                        var memoryChart = new Chart(memoryChart, {
-                            type: 'doughnut',
-                            data: {
-                                labels: [
-                                    '전체 RAM', '사용중인 RAM'
-                                ],
-                                datasets: [
-                                    {
-                                        label: '# of Votes',
-                                        data: [
-                                            totalMemory, usedMemory
-                                        ],
-                                        backgroundColor: [
-                                            'rgba(202,219,255,0.8)', 'rgba(255, 197,202, 1)'
-                                        ],
-                                        borderColor: [
-                                            'rgba(144,179,255,1)', 'rgba(254, 128,138,1)'
-                                        ],
-                                        borderWidth: 1
-                                    }
-                                ]
-                            },
-                            options: {
-                                animation: {
-                                    duration: 0
-                                }, 
-                               scales: {
-                                    yAxes: [
+                            var memoryChart = new Chart(memoryChart, {
+                                type: 'doughnut',
+                                data: {
+                                    datasets: [
                                         {
-                                            gridLines: {
-                                                display: false
-                                            },
-                                            ticks: {
-                                                display: false
-                                            }
-                                        }
-                                    ],
-                                    xAxes: [
-                                        {
-                                            gridLines: {
-                                                display: false
-                                            },
-                                            ticks: {
-                                                display: false
-                                            }
+                                            data: [
+                                                totalMemory, usedMemory
+                                            ],
+                                            backgroundColor: [
+                                                'rgba(255,255,255,1)', 'rgba(254,196,0,0.5)'
+                                            ],
+                                            borderColor: [
+                                                'rgba(254,196,0,1)', 'rgba(254,196,0,1)'
+                                            ],
+                                            borderWidth: 1,
+                                            hoverOffset: 10
                                         }
                                     ]
+                                },
+                                options: {
+                                    animation: {
+                                        duration: 0
+                                    },
+                                    scales: {
+                                        yAxes: [
+                                            {
+                                                gridLines: {
+                                                    display: false
+                                                },
+                                                ticks: {
+                                                    display: false
+                                                }
+                                            }
+                                        ],
+                                        xAxes: [
+                                            {
+                                                gridLines: {
+                                                    display: false
+                                                },
+                                                ticks: {
+                                                    display: false
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    hoverOffset: 10,
+                                    cutoutPercentage : 90
                                 }
-                            }
-                        });
+                            });
 
-                        var diskChart = new Chart(diskChart, {
-                            type: 'doughnut',
-                            data: {
-                                labels: [
-                                    '전체 DISK', '사용중인 DISK'
-                                ],
-                                datasets: [
-                                    {
-                                        label: '# of Votes',
-                                        data: [
-                                            totalDisk, usedDisk
-                                        ],
-                                        backgroundColor: [
-                                            'rgba(148, 229, 203, 0.5)', 'rgba(255,2,175,0.2)'
-                                        ],
-                                        borderColor: [
-                                            'rgba(45,167,128,0.7)', 'rgba(255,2,175,0.4)'
-                                        ],
-                                        borderWidth: 1
-                                    }
-                                ]
-                            },
-                            options: {
-                                animation: {
-                                    duration: 0
-                                }, 
-                                scales: {
-                                    yAxes: [
+                            var diskChart = new Chart(diskChart, {
+                                type: 'doughnut',
+                                data: {
+                                    datasets: [
                                         {
-                                            gridLines: {
-                                                display: false
-                                            },
-                                            ticks: {
-                                                display: false
-                                            }
-                                        }
-                                    ],
-                                    xAxes: [
-                                        {
-                                            gridLines: {
-                                                display: false
-                                            },
-                                            ticks: {
-                                                display: false
-                                            }
+                                             data: [
+                                                totalDisk, usedDisk
+                                            ],
+                                            backgroundColor: [
+                                                'rgba(255,255,255,1)', 'rgba(255,112,141,0.5)'
+                                            ],
+                                            borderColor: [
+                                                'rgba(255,112,141,1)', 'rgba(255,112,141,1)'
+                                            ],
+                                            borderWidth: 1
                                         }
                                     ]
+                                },
+                                options: {
+                                    animation: {
+                                        duration: 0
+                                    },
+                                    scales: {
+                                        yAxes: [
+                                            {
+                                                gridLines: {
+                                                    display: false
+                                                },
+                                                ticks: {
+                                                    display: false
+                                                }
+                                            }
+                                        ],
+                                        xAxes: [
+                                            {
+                                                gridLines: {
+                                                    display: false
+                                                },
+                                                ticks: {
+                                                    display: false
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    cutoutPercentage : 90
                                 }
-                            }
-                        });
+                            });
 
-                        $(function () {
-                            
+                            $(function () {
+
                             setInterval(() => {
-                                $.ajax({
-                                    type: 'get',
-                                    url: 'exe.php',
-                                    success: function (data) {
+                                $.ajax({type: 'get', url: 'exe.php', success: function (data) {
                                         //console.log(data);
-                                    }
-                                });
+                                    }});
                                 $.ajax({
                                     type: 'get',
                                     url: 'monitering.json',
                                     dataType: 'json',
                                     mimeType: "application/json",
                                     success: function (data) {
-                                        console.log(data["memory"][0].memoryTotal);
-                                        console.log(data["memory"]);
+                                        _totalCpu = data["cpu"][0].cpuTotal;
+                                        usedCpu = data["cpu"][0].cpuUsed;
+                                        perCpu = data["cpu"][0].cpuPer;
 
-                                        _totalCpu=data["cpu"][0].cpuTotal;
-                                        usedCpu=data["cpu"][0].cpuUsed;
-                                        perCpu=data["cpu"][0].cpuPer;
-                                        
-                                        _totalMemory=data["memory"][0].memoryTotal;
-                                        usedMemory=data["memory"][0].memoryUsed;
-                                        perMemory=data["memory"][0].memoryPer;
-                                        
+                                        _totalMemory = data["memory"][0].memoryTotal;
+                                        usedMemory = data["memory"][0].memoryUsed;
+                                        perMemory = data["memory"][0].memoryPer;
+
                                         console.log(_totalMemory)
                                         console.log(usedMemory)
 
-                                        _totalDisk=data["disk"][0].diskTotal;
-                                        usedDisk=data["disk"][0].diskUsed;
-                                        perDisk=data["disk"][0].diskPer;
+                                        _totalDisk = data["disk"][0].diskTotal;
+                                        usedDisk = data["disk"][0].diskUsed;
+                                        perDisk = data["disk"][0].diskPer;
 
                                         getTotal();
 
-                                        cpuChart.data.datasets[0].data = [totalCpu, perCpu];
-                                        memoryChart.data.datasets[0].data = [totalMemory, perMemory];
-                                        diskChart.data.datasets[0].data = [totalDisk, perDisk];
+                                        cpuChart
+                                            .data
+                                            .datasets[0]
+                                            .data = [totalCpu, perCpu];
+                                        memoryChart
+                                            .data
+                                            .datasets[0]
+                                            .data = [totalMemory, perMemory];
+                                        diskChart
+                                            .data
+                                            .datasets[0]
+                                            .data = [totalDisk, perDisk];
                                         cpuChart.update();
                                         memoryChart.update();
                                         diskChart.update();
@@ -362,271 +877,64 @@
                                         usedDiskEL.text(usedDisk);
                                         perDiskEL.text(perDisk);
 
+                                        graphBarCpuEL.attr('style', 'width:' + perCpu + '%;');
+                                        graphBarMemoryEL.attr('style', 'width:' + perMemory + '%;');
+
+                                        var now = new Date();
+                                        var realTime = now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds();
+
+                                        if (config.data.datasets.length > 0) {
+                                            config
+                                                .data
+                                                .labels
+                                                .push(realTime);
+
+                                            config
+                                                .data
+                                                .datasets[0]
+                                                .data
+                                                .push(perCpu);
+                                            config
+                                                .data
+                                                .datasets[1]
+                                                .data
+                                                .push(perMemory);
+                                            config
+                                                .data
+                                                .datasets[2]
+                                                .data
+                                                .push(perDisk);
+
+                                            config
+                                                .data
+                                                .labels
+                                                .splice(0, 1);
+                                            config
+                                                .data
+                                                .datasets[0]
+                                                .data
+                                                .splice(0, 1);
+                                            config
+                                                .data
+                                                .datasets[1]
+                                                .data
+                                                .splice(0, 1);
+                                            config
+                                                .data
+                                                .datasets[2]
+                                                .data
+                                                .splice(0, 1);
+
+                                            window.graph.update();
+                                        }
                                     }
                                 });
+
                             }, 1000);
-                         
-                        
-                        });
 
+                            });
                         </script>
-                          
-                        </div>
 
-                        <div class="row">
-                            <div class="col-xl-8 col-md-12">
-                                <!-- Sales Graph -->
-                                <div class="card card-default" data-scroll-height="675">
-                                    <div class="card-header">
-                                        <h2>Sales Of The Year</h2>
-                                    </div>
-                                    <div class="card-body">
-                                        <canvas id="linechart" class="chartjs"></canvas>
-                                    </div>
-                                    <div class="card-footer d-flex flex-wrap bg-white p-0">
-                                        <div class="col-6 px-0">
-                                            <div class="text-center p-4">
-                                                <h4>$6,308</h4>
-                                                <p class="mt-2">Total orders of this year</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 px-0">
-                                            <div class="text-center p-4 border-left">
-                                                <h4>$70,506</h4>
-                                                <p class="mt-2">Total revenue of this year</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-md-12">
-                                <!-- Doughnut Chart -->
-                                <div class="card card-default" data-scroll-height="675">
-                                    <div class="card-header justify-content-center">
-                                        <h2>Orders Overview</h2>
-                                    </div>
-                                    <div class="card-body">
-                                        <canvas id="doChart"></canvas>
-                                    </div>
-                                    <a href="#" class="pb-5 d-block text-center text-muted">
-                                        <i class="mdi mdi-download mr-2"></i>
-                                        Download overall report</a>
-                                    <div class="card-footer d-flex flex-wrap bg-white p-0">
-                                        <div class="col-6">
-                                            <div class="py-4 px-4">
-                                                <ul class="d-flex flex-column justify-content-between">
-                                                    <li class="mb-2">
-                                                        <i class="mdi mdi-checkbox-blank-circle-outline mr-2" style="color: #4c84ff"></i>Order Completed</li>
-                                                    <li>
-                                                        <i class="mdi mdi-checkbox-blank-circle-outline mr-2" style="color: #80e1c1 "></i>Order Unpaid</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 border-left">
-                                            <div class="py-4 px-4 ">
-                                                <ul class="d-flex flex-column justify-content-between">
-                                                    <li class="mb-2">
-                                                        <i class="mdi mdi-checkbox-blank-circle-outline mr-2" style="color: #8061ef"></i>Order Pending</li>
-                                                    <li>
-                                                        <i class="mdi mdi-checkbox-blank-circle-outline mr-2" style="color: #ffa128"></i>Order Canceled</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-xl-4 col-lg-6 col-12">
-
-                                <!-- Polar and Radar Chart -->
-                                <div class="card card-default">
-                                    <div class="card-header justify-content-center">
-                                        <h2>Sales Overview</h2>
-                                    </div>
-                                    <div class="card-body pt-0">
-                                        <ul
-                                            class="nav nav-pills mb-5 mt-5 nav-style-fill nav-justified"
-                                            id="pills-tab"
-                                            role="tablist">
-                                            <li class="nav-item">
-                                                <a
-                                                    class="nav-link active"
-                                                    id="pills-home-tab"
-                                                    data-toggle="pill"
-                                                    href="#pills-home"
-                                                    role="tab"
-                                                    aria-controls="pills-home"
-                                                    aria-selected="true">Sales Status</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a
-                                                    class="nav-link"
-                                                    id="pills-profile-tab"
-                                                    data-toggle="pill"
-                                                    href="#pills-profile"
-                                                    role="tab"
-                                                    aria-controls="pills-profile"
-                                                    aria-selected="false">Monthly Sales</a>
-                                            </li>
-                                        </ul>
-                                        <div class="tab-content" id="pills-tabContent">
-                                            <div
-                                                class="tab-pane fade show active"
-                                                id="pills-home"
-                                                role="tabpanel"
-                                                aria-labelledby="pills-home-tab">
-                                                <canvas id="polar"></canvas>
-                                            </div>
-                                            <div
-                                                class="tab-pane fade"
-                                                id="pills-profile"
-                                                role="tabpanel"
-                                                aria-labelledby="pills-profile-tab">
-                                                <canvas id="radar"></canvas>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        <div class="row">
-                            <div class="col-xl-6">
-                                <!-- To Do list -->
-                                <div class="card card-default todo-table" id="todo" data-scroll-height="550">
-                                    <div class="card-header justify-content-between">
-                                        <h2>To Do List</h2>
-                                        <a class="btn btn-primary btn-pill" id="add-task" href="#" role="button">
-                                            Add task
-                                        </a>
-                                    </div>
-                                    <div class="card-body slim-scroll">
-                                        <div class="todo-single-item d-none" id="todo-input">
-                                            <form >
-                                                <div class="form-group">
-                                                    <input
-                                                        type="text"
-                                                        class="form-control"
-                                                        placeholder="Enter Todo"
-                                                        autofocus="autofocus">
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div class="todo-list" id="todo-list">
-                                            <div class="todo-single-item d-flex flex-row justify-content-between finished">
-                                                <i class="mdi"></i>
-                                                <span >Finish Dashboard UI Kit update</span>
-                                                <span class="badge badge-primary">Finished</span>
-                                            </div>
-                                            <div class="todo-single-item d-flex flex-row justify-content-between current">
-                                                <i class="mdi"></i>
-                                                <span >Create new prototype for the landing page</span>
-                                                <span class="badge badge-primary">Today</span>
-                                            </div>
-                                            <div class="todo-single-item d-flex flex-row justify-content-between ">
-                                                <i class="mdi"></i>
-                                                <span >
-                                                    Add new Google Analytics code to all main files
-                                                </span>
-                                                <span class="badge badge-danger">Yesterday</span>
-                                            </div>
-
-                                            <div class="todo-single-item d-flex flex-row justify-content-between ">
-                                                <i class="mdi"></i>
-                                                <span >Update parallax scroll on team page</span>
-                                                <span class="badge badge-success">Dec 15, 2018</span>
-                                            </div>
-
-                                            <div class="todo-single-item d-flex flex-row justify-content-between ">
-                                                <i class="mdi"></i>
-                                                <span >Update parallax scroll on team page</span>
-                                                <span class="badge badge-success">Dec 15, 2018</span>
-                                            </div>
-                                            <div class="todo-single-item d-flex flex-row justify-content-between ">
-                                                <i class="mdi"></i>
-                                                <span >Create online customer list book</span>
-                                                <span class="badge badge-success">Dec 15, 2018</span>
-                                            </div>
-                                            <div class="todo-single-item d-flex flex-row justify-content-between ">
-                                                <i class="mdi"></i>
-                                                <span >Lorem ipsum dolor sit amet, consectetur.</span>
-                                                <span class="badge badge-success">Dec 15, 2018</span>
-                                            </div>
-
-                                            <div class="todo-single-item d-flex flex-row justify-content-between mb-1">
-                                                <i class="mdi"></i>
-                                                <span >Update parallax scroll on team page</span>
-                                                <span class="badge badge-success">Dec 15, 2018</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="mt-3"></div>
-                                </div>
-                            </div>
-                            <div class="col-xl-6">
-                                <!-- area chart -->
-                                <div class="card card-default">
-                                    <div class="card-header d-block d-md-flex justify-content-between">
-                                        <h2>World Wide Customer
-                                        </h2>
-                                        <div class="dropdown show d-inline-block widget-dropdown ml-auto">
-                                            <a
-                                                class="dropdown-toggle"
-                                                href="#"
-                                                role="button"
-                                                id="world-dropdown"
-                                                data-toggle="dropdown"
-                                                aria-haspopup="true"
-                                                aria-expanded="false"
-                                                data-display="static">
-                                                World Wide
-                                            </a>
-                                            <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="world-dropdown">
-                                                <li class="dropdown-item">
-                                                    <a href="#">Continetal chart</a>
-                                                </li>
-                                                <li class="dropdown-item">
-                                                    <a href="#">Sub-continental</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="card-body vector-map-world">
-                                        <div id="world" style="height: 100%; width: 100%;"></div>
-                                    </div>
-                                    <div class="card-footer d-flex flex-wrap bg-white p-0">
-                                        <div class="col-6">
-                                            <div class="p-4">
-                                                <ul class="d-flex flex-column justify-content-between">
-                                                    <li class="mb-2">
-                                                        <i class="mdi mdi-checkbox-blank-circle-outline mr-2" style="color: #29cc97"></i>America
-                                                        <span class="float-right">5k</span></li>
-                                                    <li>
-                                                        <i class="mdi mdi-checkbox-blank-circle-outline mr-2" style="color: #4c84ff "></i>Australia
-                                                        <span class="float-right">3k</span></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="p-4 border-left">
-                                                <ul class="d-flex flex-column justify-content-between">
-                                                    <li class="mb-2">
-                                                        <i class="mdi mdi-checkbox-blank-circle-outline mr-2" style="color: #ffa128"></i>Europe
-                                                        <span class="float-right">4k</span></li>
-                                                    <li>
-                                                        <i class="mdi mdi-checkbox-blank-circle-outline mr-2" style="color: #fe5461"></i>Africa
-                                                        <span class="float-right">2k</span></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-            
                     </div>
 
                     <div class="right-sidebar-2">
