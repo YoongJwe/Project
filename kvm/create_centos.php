@@ -101,7 +101,7 @@
 
     </head>
 
-    <body class="header-fixed sidebar-fixed sidebar-dark header-light" id="body">
+    <body class="header-fixed sidebar-fixed sidebar-dark header-light" id="body" data-page="centos-create">
 
         <script>
             NProgress.configure({showSpinner: false});
