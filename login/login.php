@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <head>
   <meta charset="utf-8" />
@@ -16,15 +16,15 @@
 
 
   <!-- PLUGINS CSS STYLE -->
-  <link href="assets/plugins/nprogress/nprogress.css" rel="stylesheet" />
+  <link href="../assets/plugins/nprogress/nprogress.css" rel="stylesheet" />
 
   
 
   <!-- SLEEK CSS -->
-  <link id="sleek-css" rel="stylesheet" href="assets/css/sleek.css" />
+  <link rel="stylesheet" href="../assets/css/sleek.css" />
 
   <!-- FAVICON -->
-  <link href="assets/img/favicon.png" rel="shortcut icon" />
+  <link href="../assets/img/favicon.png" rel="shortcut icon" />
 
   
 
@@ -36,8 +36,28 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
-  <script src="assets/plugins/nprogress/nprogress.js"></script>
-</head>
+  <script src="../assets/plugins/nprogress/nprogress.js"></script>
+  <script
+            src="https://code.jquery.com/jquery-3.5.1.js"
+            integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+            crossorigin="anonymous"></script>
+  <script>
+             $(document).ready(function(){
+                const signinForm = document.querySelector("#signin-form");
+                const signinButton = document.querySelector("#signin-button");
+                const email = document.querySelector("#email");
+                const password = document.querySelector("#password");
+                signinButton.addEventListener("click", function (e) {
+                    if(!email.value ){
+                      alert("이메일을 입력해주세요!");
+                    }else if(!password.value){
+                      alert("비밀번호를 입력해주세요!");
+                    } else {
+                      signinForm.submit();
+                    }
+                });
+              });
+            </script>
 
 </head>
   <body class="" id="body">
@@ -55,35 +75,35 @@
                       <path class="logo-fill-white" fill="#FFF" d="M11 4v25l8 4V0z" />
                     </g>
                   </svg>
-                  <span class="brand-name">Sleek Dashboard</span>
+                  <span class="brand-name">JJABIX DASHBOARD</span>
                 </a>
               </div>
             </div>
             <div class="card-body p-5">
 
-              <h4 class="text-dark mb-5">Sign In</h4>
-              <form action="/index.html">
+              <h4 class="text-dark mb-5">로그인</h4>
+              <form action="./login_check.php" method="POST" id="signin-form">
                 <div class="row">
                   <div class="form-group col-md-12 mb-4">
-                    <input type="email" class="form-control input-lg" id="email" aria-describedby="emailHelp" placeholder="Username">
+                    <input type="email" class="form-control input-lg" name="email" id="email" aria-describedby="emailHelp" placeholder="이메일">
                   </div>
                   <div class="form-group col-md-12 ">
-                    <input type="password" class="form-control input-lg" id="password" placeholder="Password">
+                    <input type="password" class="form-control input-lg" name="password" id="password" placeholder="비밀번호">
                   </div>
                   <div class="col-md-12">
                     <div class="d-flex my-2 justify-content-between">
                       <div class="d-inline-block mr-3">
-                        <label class="control control-checkbox">Remember me
+                        <label class="control control-checkbox">로그인 정보 기억하기
                           <input type="checkbox" />
                           <div class="control-indicator"></div>
                         </label>
 
                       </div>
-                      <p><a class="text-blue" href="#">Forgot Your Password?</a></p>
+                      <p><a class="text-blue" href="#">비밀번호 찾기</a></p>
                     </div>
-                    <button type="submit" class="btn btn-lg btn-primary btn-block mb-4">Sign In</button>
-                    <p>Don't have an account yet ?
-                      <a class="text-blue" href="sign-up.html">Sign Up</a>
+                    <button type="submit" class="btn btn-lg btn-primary btn-block mb-4" id="signin-button" onclick="return false;">로그인</button>
+                    <p>아직 회원이 아니신가요?
+                      <a class="text-blue" href="sign_up.php">회원가입</a>
                     </p>
                   </div>
                 </div>
@@ -92,11 +112,7 @@
           </div>
         </div>
       </div>
-      <div class="copyright pl-0">
-        <p class="text-center">&copy; 2018 Copyright Sleek Dashboard Bootstrap Template by
-          <a class="text-primary" href="http://www.iamabdus.com/" target="_blank">Abdus</a>.
-        </p>
-      </div>
+     
     </div>
 
 </body>

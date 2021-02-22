@@ -1,3 +1,14 @@
-.monitering{background: #fff; padding: 15px 0;}
-.monitering .width60{width: 60%; margin: 0 auto;}
-.monitering .width60 li{font-size: 15px; margin: 10px 0;}
+/* index.php - dashboard */
+.row{margin-left: 0; margin-bottom: 50px;}
+.monitering{padding: 5px;}
+.monitering h4{margin-bottom:10px;}
+.monitering .guide{background: #fff; padding: 20px;}
+.monitering .width60{width: 100%; margin-bottom: 20px; }
+.monitering .width60 li{font-size: 15px; margin: 0; }
+.monitering .width60 li:last-child{width:100px; text-align: center; font-size:20px; position:absolute; top:182px; left:50%; margin-left:-45px;}
+
+.graph{background: #fff; padding: 15px 0;}
+.display-none{display: none; width: 0; height: 0;}
+
+/* header.php */
+.login{padding: 27px;}

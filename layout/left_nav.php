@@ -15,7 +15,7 @@
                 <ul class="nav sidebar-inner" id="sidebar-menu">
 
                     <li class="has-sub active expand">
-                        <a class="sidenav-item-link" href="index.php">
+                        <a class="sidenav-item-link" href="/index.php">
                             <i class="mdi mdi-view-dashboard-outline"></i>
                             <span class="nav-text">Dashboard</span>
                         </a>
@@ -202,19 +202,19 @@
                                         <div class="sub-menu">
 
                                             <li >
-                                                <a href="sign-in.html">
+                                                <a href="#">
                                                     <i class="mdi mdi-play"></i>
                                                     CentOS Instance</a>
                                             </li>
 
                                             <li >
-                                                <a href="sign-up.html">
+                                                <a href="#">
                                                     <i class="mdi mdi-play"></i>
                                                     Ubuntu Instance</a>
                                             </li>
 
                                             <li >
-                                                <a href="sign-up.html">
+                                                <a href="#">
                                                     <i class="mdi mdi-play"></i>
                                                     Fedora Instance</a>
                                             </li>
@@ -224,7 +224,7 @@
                                 </li>
 
                                 <li >
-                                    <a class="sidenav-item-link" href="user-profile.html">
+                                    <a class="sidenav-item-link" href="#">
                                         <span class="nav-text">View Instance List</span>
 
                                     </a>
@@ -264,19 +264,19 @@
                                         <div class="sub-menu">
 
                                             <li >
-                                                <a href="sign-in.html">
+                                                <a href="#">
                                                     <i class="mdi mdi-play"></i>
                                                     CentOS Instance</a>
                                             </li>
 
                                             <li >
-                                                <a href="sign-up.html">
+                                                <a href="#">
                                                     <i class="mdi mdi-play"></i>
                                                     Ubuntu Instance</a>
                                             </li>
 
                                             <li >
-                                                <a href="sign-up.html">
+                                                <a href="#">
                                                     <i class="mdi mdi-play"></i>
                                                     Fedora Instance</a>
                                             </li>
@@ -286,7 +286,7 @@
                                 </li>
 
                                 <li >
-                                    <a class="sidenav-item-link" href="user-profile.html">
+                                    <a class="sidenav-item-link" href="#">
                                         <span class="nav-text">View Instance List</span>
 
                                     </a>
@@ -303,18 +303,20 @@
             <div class="sidebar-footer">
                 <hr class="separator mb-0"/>
                 <div class="sidebar-footer-content">
-                    <h6 class="text-uppercase">
+                    <h6 class="text-uppercase cpu">
                         Cpu Uses
-                        <span class="float-right">40%</span>
+                        <span class="float-right">%</span>
+                        <span class="float-right per">40</span>
                     </h6>
-                    <div class="progress progress-xs">
+                    <div class="progress progress-xs cpu">
                         <div class="progress-bar active" style="width: 40%;" role="progressbar"></div>
                     </div>
-                    <h6 class="text-uppercase">
+                    <h6 class="text-uppercase memory">
                         Memory Uses
-                        <span class="float-right">65%</span>
+                        <span class="float-right">%</span>
+                        <span class="float-right per">65</span>
                     </h6>
-                    <div class="progress progress-xs">
+                    <div class="progress progress-xs memory">
                         <div
                             class="progress-bar progress-bar-warning"
                             style="width: 65%;"
