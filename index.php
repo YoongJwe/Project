@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<?php include $_SERVER["DOCUMENT_ROOT"]."/login/login_session_check.php";?>
+
+<html lang="ko">
     <head>
         <meta charset="utf-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>

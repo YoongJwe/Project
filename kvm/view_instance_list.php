@@ -1,3 +1,5 @@
+<?php include $_SERVER["DOCUMENT_ROOT"]."/login/login_session_check.php";?>
+
 <!DOCTYPE html>
 <html lang="ko" dir="ltr">
     <head>

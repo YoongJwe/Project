@@ -339,6 +339,7 @@
         $main =$('.dashboard')
         $main.on('click', function(){
            localStorage.setItem('click', false);
+           localStorage.setItem('click', false);
         });
 
         $realLink=$('a.effective');
