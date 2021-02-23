@@ -50,7 +50,7 @@
         <title>Blockchain Class</title>
     </head>
 
-    <body class="header-fixed sidebar-fixed sidebar-dark header-light" id="body"data-page="nat-network">
+    <body class="header-fixed sidebar-fixed sidebar-dark header-light" id="body" data-page="nat-network">
 
         <script>
             NProgress.configure({showSpinner: false});

@@ -52,7 +52,7 @@
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
     </head>
 
-    <body class="header-fixed sidebar-fixed sidebar-dark header-light" id="body">
+    <body class="header-fixed sidebar-fixed sidebar-dark header-light" id="body" data-page="dashboard">
 
         <script>
             NProgress.configure({showSpinner: false});
@@ -61,7 +61,7 @@
 
         <div id="toaster"></div>
 
-        <div class="wrapper">
+        <div class="wrapper dashboard">
             <!-- Github Link -->
             <a
                 href="https://github.com/tafcoder/sleek-dashboard"
@@ -821,7 +821,7 @@
                                     cutoutPercentage : 90
                                 }
                             });      
-                            // asdadasdasd
+                            
                             $(function () {
 
                             setInterval(() => {

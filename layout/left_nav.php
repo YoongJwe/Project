@@ -357,6 +357,38 @@
             $this.closest('.collapse').parents('.has-sub').children('.sidenav-item-link').removeClass('collapsed').attr('aria-expanded',"true");
         }
 
+        $dashboard = $('.wrapper.dashboard');
+        if($dashboard.length == 0){
+
+            //graph data set
+            var PerCpu = 0;
+            var PerMemory = 0;
+            var PerCpuEL = $('.cpu .per');
+            var PerMemoryEL = $('.memory .per');
+            var graphBarCpuEL = $('.cpu .progress-bar.active');
+            var graphBarMemoryEL = $('.cpu .progress-bar.progress-bar-warning');
+
+            setInterval(() => {
+                    $.ajax({type: 'get', url: '/exe.php', success: function (data) {
+                        //console.log(data);
+                    }});
+                    $.ajax({
+                       type: 'get',
+                       url: '/monitering.json',
+                       dataType: 'json',
+                       mimeType: "application/json",
+                       success: function (data) {
+                            perCpu = data["cpu"][0].cpuPer;
+                            perMemory = data["memory"][0].memoryPer;
+                            PerCpuEL.text(perCpu);
+                            PerMemoryEL.text(perMemory);
+                            graphBarCpuEL.attr('style', 'width:' + perCpu + '%;');
+                            graphBarMemoryEL.attr('style', 'width:' + perMemory + '%;');
+                        }
+                    });
+                }, 1000);
+        }
+    });
        
     </script>
 <!-- //LEFT SIDE NAV WITH FOOTER -->
