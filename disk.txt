@@ -1,8 +1,8 @@
-/dev/mapper/centos-root     36805060 5901692  30903368      17% /
+/dev/mapper/centos-root     36805060 5913672  30891388      17% /
 devtmpfs                     1913596       0   1913596       0% /dev
 tmpfs                        1930648   31724   1898924       2% /dev/shm
 tmpfs                        1930648       0   1930648       0% /sys/fs/cgroup
-tmpfs                        1930648  190176   1740472      10% /run
-tmpfs                         386132      60    386072       1% /run/user/0
+tmpfs                        1930648  182912   1747736      10% /run
+tmpfs                         386132      56    386076       1% /run/user/0
 /dev/sda1                    1038336  190096    848240      19% /boot
-192.168.2.200:/cloudimgs    38770304 4611072  34159232      12% /StorageDB
+192.168.2.200:/cloudimgs    38770304 4634368  34135936      12% /StorageDB

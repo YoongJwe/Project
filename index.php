@@ -603,9 +603,9 @@
                                     <h4>MEMORY</h4>
                                     <ul class="width60 memory">
                                         <li>전체 :
-                                            <span class="total"></span></li>
+                                            <span class="total"></span>G</li>
                                         <li>사용중 :
-                                            <span class="used"></span></li>
+                                            <span class="used"></span>G</li>
                                         <li><span class="per"></span>%</li>
                                     </ul>
                                     <canvas id="memory"></canvas>
