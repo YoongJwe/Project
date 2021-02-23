@@ -124,12 +124,14 @@
                           echo "<td><samp>" . $row['IP'] . "</samp></td>";
                           echo "<td><samp>" . $row['NETWORK'] . "</samp></td>";
                           echo "<td>";
-                          echo "<button type='submit' class='mb-1 btn btn-sm btn-danger' value=".$row['NAME']." name='name'>Delete</button>";
+                          echo "<button type='submit' class='mb-1 btn btn-sm btn-danger' value=".$row['NAME']." name='name'>DELETE</button>";
                           $webssh = substr($row['IP'],-6,5);
                           $webssh = "https://183.100.227.115:".$webssh;
-                          
-                          echo "<a href='$webssh' target='_blank'> <button type='button' class='mb-1 btn btn-sm btn-info'>SSH</button></a>";
-                          
+                          echo "<a href='$webssh' target='_blank'> <button type='button' class='mb-1 btn btn-sm btn-secondary'>SSH</button></a>";
+                          $zabbix = $row['HostID'];
+                          $zabbix = "http://183.100.227.115/zabbix/zabbix.php?action=charts.view&filter_set=1&filter_hostids%5B0%5D=".$zabbix;
+                          echo "<a href='$zabbix' target='_blank'> <button type='button' class='mb-1 btn btn-sm btn-info'>ZABBIX</button></a>";
+
                           echo "</td>";
                           echo "</tr>";
                           }
