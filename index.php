@@ -824,7 +824,7 @@
                             
                             $(function () {
 
-                            setInterval(() => {
+                                setInterval(() => {
                                 $.ajax({type: 'get', url: 'exe.php', success: function (data) {
                                         //console.log(data);
                                     }});
@@ -932,7 +932,7 @@
                                     }
                                 });
 
-                            }, 1000);
+                                }, 1000);
 
                             });
                         </script>

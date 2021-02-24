@@ -1,3 +1,1 @@
-
-{"memory":[{"memoryTotal":1996, "memoryUsed":1250, "memoryPer":68.00}],"cpu":[{ "cpuTotal":100,"cpuUsed":24.91,"cpuPer":24.91}],"disk":[{ "diskTotal":24.41,"diskUsed":11.33,"diskPer":46.00 }]}
-
+{"memory":[{"memoryTotal":3.68, "memoryUsed":2.16, "memoryPer":72.00}],"cpu":[{ "cpuTotal":100,"cpuUsed":5.94,"cpuPer":5.94}],"disk":[{ "diskTotal":80.78,"diskUsed":8.89,"diskPer":11.00 }]}
